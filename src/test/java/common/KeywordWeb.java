@@ -41,7 +41,7 @@ public class KeywordWeb {
     public KeywordWeb() {
     }
 
-    public static void openBrowser(String browser, String... url) {
+    public void openBrowser(String browser, String... url) {
         logger.info("Open browser");
         handleChromeNotifications();
         switch (browser.toUpperCase()) {
@@ -66,7 +66,7 @@ public class KeywordWeb {
             driver.get(rawUrl);
         }
     }
-    public static void handleChromeNotifications() {
+    public void handleChromeNotifications() {
         ChromeOptions ops = new ChromeOptions();
         ops.addArguments("--headless");
         ops.addArguments("--disable-notifications");
@@ -102,7 +102,7 @@ public class KeywordWeb {
         driver.manage().window().setSize(dimension);
     }
 
-    public static void verifyUrl(String url){
+    public void verifyUrl(String url){
         //verify url hiện tại với url truyền vào
         logger.info("Verify URL..." + url);
         Assert.assertTrue(getCurrentPageUrl().contains(url), "URL incorrect.");
@@ -127,7 +127,7 @@ public class KeywordWeb {
         }
     }
 
-    public static void click(String element) {
+    public void click(String element) {
         logger.info("click " + element);
         String xPathElement = PropertiesHelpers.getPropValue(element);
         if (xPathElement == null) {
@@ -137,7 +137,7 @@ public class KeywordWeb {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPathElement))).click();
     }
 
-    public static void sendKeys(String element, String content) {
+    public void sendKeys(String element, String content) {
         logger.info("send keys " + element + " with content " + content);
         String xPathElement1 = PropertiesHelpers.getPropValue(element);
         String xPathElement2 = PropertiesHelpers.getPropValue(content);
@@ -175,7 +175,7 @@ public class KeywordWeb {
         js.executeScript(command);
     }
 
-    public static void maximizeWindow() {
+    public void maximizeWindow() {
         logger.info("Maximizing browser window...");
         driver.manage().window().maximize();
     }
@@ -189,7 +189,7 @@ public class KeywordWeb {
         driver.navigate().to(xPathElement);
     }
 
-    public static String getCurrentPageUrl() {
+    public String getCurrentPageUrl() {
         logger.info("Navigating to URL...");
         return driver.getCurrentUrl();
     }
@@ -208,7 +208,7 @@ public class KeywordWeb {
     }
 
 
-    public static boolean verifyElementVisible(String element) {
+    public boolean verifyElementVisible(String element) {
         logger.info("verify Element Visible " + element);
         String xPathElement = PropertiesHelpers.getPropValue(element);
         if (xPathElement == null) {
@@ -224,7 +224,7 @@ public class KeywordWeb {
         }
     }
 
-    public static boolean verifyElementIsSelected(String element) {
+    public boolean verifyElementIsSelected(String element) {
         logger.info("verify Element Is Selected " + element);
         String xPathElement = PropertiesHelpers.getPropValue(element);
         if (xPathElement == null) {
@@ -240,7 +240,7 @@ public class KeywordWeb {
         }
     }
 
-    public static boolean verifyElementPresent(String element) {
+    public boolean verifyElementPresent(String element) {
         logger.info("verify Element Present " + element);
         String xPathElement = PropertiesHelpers.getPropValue(element);
         if (xPathElement == null) {
@@ -256,14 +256,14 @@ public class KeywordWeb {
         }
     }
 
-    public static void assertTrue(boolean status, String mess){
+    public void assertTrue(boolean status, String mess){
         Assert.assertTrue(status,mess);
     }
-    public static void assertFalse(boolean status, String mess){
+    public void assertFalse(boolean status, String mess){
         Assert.assertFalse(status,mess);
     }
 
-    public static void verifyAttribute(String elementGetAttribute, String attribute, String expect) {
+    public void verifyAttribute(String elementGetAttribute, String attribute, String expect) {
         logger.info("verifyAttribute " + elementGetAttribute + ": " + attribute + " == " + expect);
         String xPathElement1 = PropertiesHelpers.getPropValue(elementGetAttribute);
         String xPathElement2 = PropertiesHelpers.getPropValue(expect);
@@ -279,7 +279,7 @@ public class KeywordWeb {
                 xPathElement2);
     }
 
-    public static boolean verifyElementState(String element) {
+    public boolean verifyElementState(String element) {
         logger.info("verify Element State" + element);
         String xPathElement = PropertiesHelpers.getPropValue(element);
         if (xPathElement == null) {
@@ -295,7 +295,7 @@ public class KeywordWeb {
         }
     }
 
-    public static void assertEquals(String expected, String actual) {
+    public void assertEquals(String expected, String actual) {
         logger.info("compare from " + expected + " with " + actual);
         String xPathElement1 = PropertiesHelpers.getPropValue(expected);
         String xPathElement2 = PropertiesHelpers.getPropValue(actual);
@@ -309,7 +309,7 @@ public class KeywordWeb {
         Assert.assertEquals(actualText, xPathElement1);
     }
 
-    public static void waitForJQueryLoad(Long timeoutWaitForPageLoad) {
+    public void waitForJQueryLoad(Long timeoutWaitForPageLoad) {
         //chờ JQuery page load xong thì xử lý tiếp
         logger.info("wait for page load done");
         ExpectedCondition<Boolean> jqueryLoad = new ExpectedCondition<Boolean>() {

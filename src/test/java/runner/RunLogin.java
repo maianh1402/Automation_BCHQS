@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
         features = "src/test/java/features/Home",
         glue = {
                 "stepDefinition.Home",
-                "common",
+                "stepDefinition",
                 "hooks"
         },
         plugin = {"pretty", "html:target/cucumber-html-report.html"}

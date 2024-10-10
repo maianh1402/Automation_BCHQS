@@ -4,13 +4,13 @@ Feature: Login BCH
   Scenario: Verify form login
     Given User navigate url
     When User verify form
-    Then User see "http://103.17.140.141:10201/login" page
+    Then User see "/login" page
 
   @failure
   Scenario Outline: Failure login
     Given User navigate url
     When User login "<account>" "<password>" and show error "<m_account>" "<m_password>"
-    Then User see "http://103.17.140.141:10201/login" page
+    Then User see "/login" page
     Examples:
       | account      | password     | m_account                   | m_password          |
       | anh          | 12345@Au     |                             | Mật khẩu không đúng |
@@ -22,5 +22,5 @@ Feature: Login BCH
   @successfully
   Scenario: Successfully login
     Given User navigate url
-    When User login "anh" "UunC1&tV" and show "Đăng nhập thành công"
-    Then User see "http://103.17.140.141:10201/home" page
+    When User login success
+    Then User see "/home" page

@@ -4,6 +4,7 @@ import common.KeywordWeb;
 import common.LoggerHelpers;
 import io.cucumber.java.*;
 import org.slf4j.Logger;
+import pages.Home.LoginPage;
 
 public class CucumberHooks {
     private static Logger logger = LoggerHelpers.getLogger();
@@ -26,7 +27,7 @@ public class CucumberHooks {
     @After
     public void afterScenario(Scenario scenario) {
         logger.info("================ afterScenario ================");
-        KeywordWeb.closeBrowser();
+//        KeywordWeb.closeBrowser();
     }
 
     @BeforeStep
